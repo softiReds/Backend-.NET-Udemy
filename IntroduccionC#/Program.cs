@@ -13,6 +13,17 @@ var beer = new Beer();
 Some(sale);
 Some(beer);
 
+var numbers = new MyList<int>(5);
+var names = new MyList<string>(5);
+var beers = new MyList<Beer>(2);
+
+beers.Add(new Beer() { Name = "CERVEZA 1", Price = 10 });
+beers.Add(new Beer() { Name = "CERVEZA 2", Price = 20 });
+
+Console.WriteLine(numbers.GetContent());
+Console.WriteLine(names.GetContent());
+Console.WriteLine(beers.GetContent());
+
 void Some(ISave save)
 {
     save.Save();
@@ -60,9 +71,17 @@ class Sale  : ISale, ISave
 
 public class Beer : ISave
 {
+    public string Name {  get; set; }
+    public int Price {  get; set; }
+
     public void Save()
     {
         Console.WriteLine("Se guardó un sevicio");
+    }
+
+    public override string ToString()
+    {
+        return $"Name: {Name} Price: {Price}";
     }
 }
 
@@ -74,4 +93,36 @@ interface ISale
 interface ISave
 {
     public void Save();
+}
+
+//  GENERICS
+public class MyList<T>
+{
+    private List<T> _list;
+    private int _limit;
+
+    public MyList(int limit)
+    {
+        _limit = limit;
+        _list = new List<T>();
+    }
+
+    public void Add(T item)
+    {
+        if(_list.Count < _limit)
+        {
+            _list.Add(item);
+        }
+    }
+
+    public string GetContent()
+    {
+        string content = "";
+        foreach(var element in _list)
+        {
+            content += element + " ";
+        }
+
+        return content;
+    }
 }
