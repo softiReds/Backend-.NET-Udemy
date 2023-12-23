@@ -1,0 +1,15 @@
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\bin\Debug\net8.0\IntroduccionC#.exe
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\bin\Debug\net8.0\IntroduccionC#.deps.json
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\bin\Debug\net8.0\IntroduccionC#.runtimeconfig.json
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\bin\Debug\net8.0\IntroduccionC#.dll
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\bin\Debug\net8.0\IntroduccionC#.pdb
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\obj\Debug\net8.0\IntroduccionC#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\obj\Debug\net8.0\IntroduccionC#.AssemblyInfoInputs.cache
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\obj\Debug\net8.0\IntroduccionC#.AssemblyInfo.cs
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\obj\Debug\net8.0\IntroduccionC#.csproj.CoreCompileInputs.cache
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\obj\Debug\net8.0\IntroduccionC#.sourcelink.json
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\obj\Debug\net8.0\IntroduccionC#.dll
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\obj\Debug\net8.0\refint\IntroduccionC#.dll
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\obj\Debug\net8.0\IntroduccionC#.pdb
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\obj\Debug\net8.0\IntroduccionC#.genruntimeconfig.cache
+C:\Users\santi\OneDrive\Documentos\SantiagoRojas\Estudio\Udemy\Backend - C#\IntroduccionC#\obj\Debug\net8.0\ref\IntroduccionC#.dll
