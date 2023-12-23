@@ -61,6 +61,25 @@ void SomeA(Action<string> fn, string message)   //  Action<type> name -> Hace al
 
     Console.WriteLine("Hace algo al final");
 }
+//  Func<parameters, ... typeRetorned> name -> Hace alución a una funcion que retorna algo, el ultimo generic enviado indica el tipo de dato que retorna la funcion (los anteriores a ese generic indica los parametros que recibe la función)
+
+//  FUNCIONES LAMDA
+//  Funciones que no tienen nombre, pero si definición. Se pueden utilizar cunado requerimos una funcionq ue solol se ejecutará una vez o se utilizará como parametro dentor de una funcion de otrden superior
+Func<int, int, int> sub = (a, b) => a - b;
+Func<int, int> some = (a) => a * 2;
+Func<int, int> some2 = (a) =>
+{
+    a = a + 1;
+    return a * 5;
+};
+
+//  Utilidad
+SomeF((a, b) => a + b, 5);  //  Utilizamos la expresión lamda para envíar una funcion por parametro sin necesidad de declararla e implementarla de manera convencional (ahorra codigo)
+void SomeF(Func<int, int, int> fn, int number)
+{
+    var result = fn(number, number);
+}
+
 void Some(ISave save)
 {
     save.Save();
