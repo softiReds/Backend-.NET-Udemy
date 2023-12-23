@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Xml;
 
 var sale = new Sale(15);
 //  Sale sale = new Sale();
@@ -63,7 +64,7 @@ void SomeA(Action<string> fn, string message)   //  Action<type> name -> Hace al
 }
 //  Func<parameters, ... typeRetorned> name -> Hace alución a una funcion que retorna algo, el ultimo generic enviado indica el tipo de dato que retorna la funcion (los anteriores a ese generic indica los parametros que recibe la función)
 
-//  FUNCIONES LAMDA
+//  EXPRESIONES LAMDA
 //  Funciones que no tienen nombre, pero si definición. Se pueden utilizar cunado requerimos una funcionq ue solol se ejecutará una vez o se utilizará como parametro dentor de una funcion de otrden superior
 Func<int, int, int> sub = (a, b) => a - b;
 Func<int, int> some = (a) => a * 2;
@@ -80,10 +81,29 @@ void SomeF(Func<int, int, int> fn, int number)
     var result = fn(number, number);
 }
 
+//  LINQ
+var namesLinq = new List<string>()
+{
+    "Santiago", "Francisco", "Hector", "Ana", "Hugo", "Pedro"
+};
+
+var namesResult = from name in namesLinq
+                  where name.Length > 3 && name.Length < 5
+                  orderby name descending
+                  select name;
+
+var namesResult2 = namesLinq.Where(e => e.Length > 3 && e.Length < 5).OrderBy(e => e).Select(e => e);
+
+foreach (var name in namesResult)
+{
+    Console.WriteLine(name);
+};
+
 void Some(ISave save)
 {
     save.Save();
 }
+
 
 class SaleWithTax : Sale
 {
