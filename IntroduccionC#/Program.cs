@@ -1,4 +1,6 @@
-﻿var sale = new Sale(15);
+﻿using System.Text.Json;
+
+var sale = new Sale(15);
 //  Sale sale = new Sale();
 //  Sale sale = new();
 var message = sale.GetInfo();
@@ -24,6 +26,20 @@ Console.WriteLine(numbers.GetContent());
 Console.WriteLine(names.GetContent());
 Console.WriteLine(beers.GetContent());
 
+var santiago = new People()
+{
+    Name = "Santiago",
+    Age = 18
+};
+
+string json = JsonSerializer.Serialize(santiago);   //  Serializer(object) -> Convierte un objeto en JSON
+Console.WriteLine(json);
+
+string myJson = @"{""Name"":""Juan"",""Age"":18}";
+
+var juan = JsonSerializer.Deserialize<People>(myJson);  //  Deserialize<class>(json) -> Convierte un JSON en un objeto de tipo class
+Console.WriteLine(juan.Name);
+Console.WriteLine(juan.Age);
 void Some(ISave save)
 {
     save.Save();
@@ -125,4 +141,11 @@ public class MyList<T>
 
         return content;
     }
+}
+
+//  JSON
+public class People
+{
+    public string Name { get; set; }
+    public int Age {  get; set; }
 }
