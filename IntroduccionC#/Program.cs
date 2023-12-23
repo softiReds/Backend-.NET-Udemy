@@ -40,6 +40,27 @@ string myJson = @"{""Name"":""Juan"",""Age"":18}";
 var juan = JsonSerializer.Deserialize<People>(myJson);  //  Deserialize<class>(json) -> Convierte un JSON en un objeto de tipo class
 Console.WriteLine(juan.Name);
 Console.WriteLine(juan.Age);
+
+//  PROGRAMACIÓN FUNCIONAL
+//  Funcion pura -> Funcion que retorna el mismo valor (en base a sus parametros) y no altera nada de su exterior. Los parametros que recibe siempre son pasados por valor (no por referencia)
+int Suma(int a, int b) => a + b;
+
+//  Funcion de primera clase -> Funcion que se puede guardar en una variable
+void Show(string message) => Console.WriteLine(message);
+
+var show = Show;
+show("Hola");
+
+SomeA(show, "Hola, ¿Cómo estás?");
+
+void SomeA(Action<string> fn, string message)   //  Action<type> name -> Hace alución a una funcion que no retorna nada, cuando se incluye un type se está indicando que la funcion recibe un parametro (y por lo tanto debemos recibir ese parametro para poder enviarselo en el momento que queramos utilizar la funcion dentro de la funcion "padre")
+{
+    Console.WriteLine("Hace algo aquí");
+
+    fn(message);    //  Ejecucion de la funcion recibida por parametro
+
+    Console.WriteLine("Hace algo al final");
+}
 void Some(ISave save)
 {
     save.Save();
