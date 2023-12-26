@@ -14,8 +14,16 @@ namespace Backend.Controllers
         }
 
         [HttpPost]
-        public decimal Add(Numbers numbers)
+        public decimal Add(Numbers numbers, [FromHeader] string Host, [FromHeader(Name = "Content-Length")] string ContentLength)   //  [FromHeader(Name = "name")] -> Permite que accedamos a información del header, el nombre del parametro debe ser identico al nombre de la propiedad en el header a la que queremos acceder
         {
+            /*
+             * 
+             *  Para agregar un header personalizado se utiliza la siguiente nomenclatura: X-NombreHeaderPersonalizado. Esto se hace desde PostMan y para acceder al valor de ese header debemos hacer uso de la propiedad name en [FromHeader]
+             * 
+             */
+
+            Console.WriteLine(Host);
+            Console.WriteLine(ContentLength);
             return numbers.A - numbers.B;
         }
 
