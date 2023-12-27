@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Backend.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers
@@ -7,6 +8,13 @@ namespace Backend.Controllers
     [ApiController]
     public class PeopleController : ControllerBase
     {
+        private IPeopleService _peopleService;
+
+        public PeopleController()
+        {
+            _peopleService = new PeopleService();
+        }
+
         [HttpGet("all")]
         public List<People> GetPeople() => Repository.People;   //  Se retorna directamente el atributo estático de la clase Repository
 
@@ -27,7 +35,7 @@ namespace Backend.Controllers
         [HttpPost]
         public IActionResult Add(People people) //  IActionResult -> Retorna unicamente el status code (usado cuando no se requiere retornar INFORMACION en el Request Body)
         {
-            if (string.IsNullOrEmpty(people.Name)) return BadRequest();
+            if (!_peopleService.Validate(people)) return BadRequest();
 
             Repository.People.Add(people);
 
