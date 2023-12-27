@@ -10,7 +10,7 @@ namespace Backend.Controllers
     {
         private IPeopleService _peopleService;
 
-        public PeopleController(IPeopleService peopleService)
+        public PeopleController([FromKeyedServices("peopleService")] IPeopleService peopleService)  //  [FromKeyedServices("key") -> Permite especificar la llave de la dependencia a la que se quiere acceder
         {
             _peopleService = peopleService;
         }
