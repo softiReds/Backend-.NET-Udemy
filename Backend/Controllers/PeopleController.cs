@@ -23,6 +23,16 @@ namespace Backend.Controllers
         [HttpGet("search/{search}")]
         public List<People> Get(string search) =>
             Repository.People.Where(e => e.Name.ToUpper().Contains(search.ToUpper())).ToList(); //  Contains(string) -> Funciona como el LIKE en SQL, busca que el string evaluado contenga el string enviado en el parametro
+
+        [HttpPost]
+        public IActionResult Add(People people) //  IActionResult -> Retorna unicamente el status code (usado cuando no se requiere retornar INFORMACION en el Request Body)
+        {
+            if (string.IsNullOrEmpty(people.Name)) return BadRequest();
+
+            Repository.People.Add(people);
+
+            return NoContent();
+        }
     }
 
     public class Repository
