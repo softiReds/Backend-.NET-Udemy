@@ -8,7 +8,14 @@ namespace Backend.Controllers
     public class PeopleController : ControllerBase
     {
         [HttpGet("all")]
-        public List<People> GetPeople() => Repository.People;
+        public List<People> GetPeople() => Repository.People;   //  Se retorna directamente el atributo estático de la clase Repository
+
+        [HttpGet("{id}")]   //  Especificación de parametros recibidos desde la URL (para agregar más -> {e}/{e})
+        public People Get(int id) => Repository.People.First(e => e.Id == id);  //  First(e => e.Property == Parameter) -> Recorre la lista y hace un filtro para retornar el primer elemento que cumpla con la condición
+
+        [HttpGet("search/{search}")]
+        public List<People> Get(string search) =>
+            Repository.People.Where(e => e.Name.ToUpper().Contains(search.ToUpper())).ToList(); //  Contains(string) -> Funciona como el LIKE en SQL, busca que el string evaluado contenga el string enviado en el parametro
     }
 
     public class Repository
