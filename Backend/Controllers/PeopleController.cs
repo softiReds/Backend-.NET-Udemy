@@ -11,7 +11,14 @@ namespace Backend.Controllers
         public List<People> GetPeople() => Repository.People;   //  Se retorna directamente el atributo estático de la clase Repository
 
         [HttpGet("{id}")]   //  Especificación de parametros recibidos desde la URL (para agregar más -> {e}/{e})
-        public People Get(int id) => Repository.People.First(e => e.Id == id);  //  First(e => e.Property == Parameter) -> Recorre la lista y hace un filtro para retornar el primer elemento que cumpla con la condición
+        public ActionResult<People> Get(int id)
+        {
+            var people = Repository.People.FirstOrDefault(e => e.Id == id);
+
+            if (people == null) return NotFound();
+
+            return Ok(people);
+        }
 
         [HttpGet("search/{search}")]
         public List<People> Get(string search) =>
