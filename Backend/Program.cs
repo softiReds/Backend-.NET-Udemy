@@ -7,6 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddKeyedSingleton<IPeopleService, PeopleService>("peopleService"); //  AddKey...("key") -> Asigna una key a la dependencia, permite que se utilice la key para especificar la dependencia a la que se quiere acceder (la especificacion se hace desde el controlador)
 builder.Services.AddKeyedSingleton<IPeopleService, People2Service>("people2Service");
 
+builder.Services.AddKeyedSingleton<IRandomService, RandomService>("randomSingleton");
+builder.Services.AddKeyedScoped<IRandomService, RandomService>("randomScoped");
+builder.Services.AddKeyedTransient<IRandomService, RandomService>("randomTransient");
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
