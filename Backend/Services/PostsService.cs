@@ -7,15 +7,17 @@ namespace Backend.Services
     {
         private HttpClient _httpClient; //  HttpClient -> Permite crear conexiónes a traves de HTTP con otros servicios
 
-        public PostsService() 
+        public PostsService(HttpClient httpClient) 
         {
-            _httpClient = new HttpClient();
+            //_httpClient = new HttpClient();
+            _httpClient = httpClient;
         }
 
         public async Task<IEnumerable<PostDTO>> Get()
         {
-            string url = "https://jsonplaceholder.typicode.com/posts";
-            var result = await _httpClient.GetAsync(url);   //  Request Get de tipo async a la url configurada
+            //string url = "https://jsonplaceholder.typicode.com/posts";
+            //var result = await _httpClient.GetAsync(url);   //  Request Get de tipo async a la url configurada
+            var result = await _httpClient.GetAsync(_httpClient.BaseAddress);
             var body = await result.Content.ReadAsStringAsync();    //  .Content.ReadAsStringAsync() -> Lee el contenido de un response y lo convierte en string
 
             var options = new JsonSerializerOptions

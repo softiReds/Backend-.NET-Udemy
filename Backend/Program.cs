@@ -13,6 +13,11 @@ builder.Services.AddKeyedTransient<IRandomService, RandomService>("randomTransie
 
 builder.Services.AddScoped<IPostsService, PostsService>();
 
+builder.Services.AddHttpClient<IPostsService, PostsService>(e =>    //  AddHttpClient<Interface, Service> -> Configura un cliente HTTP para el servicio (manera correcta de hacerlo)
+{
+    e.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/posts");
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
