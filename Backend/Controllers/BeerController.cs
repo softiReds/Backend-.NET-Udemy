@@ -35,5 +35,30 @@ namespace Backend.Controllers
 
             return Ok(beerDto);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<BeerDto>> Add(BeerInsertDto beerInsertDto)
+        {
+            var beer = new Beer()
+            {
+                Name = beerInsertDto.Name,
+                BrandID = beerInsertDto.BrandID,
+                Alcohol = beerInsertDto.Alcohol
+            };
+
+            await _context.Beers.AddAsync(beer);
+            await _context.SaveChangesAsync();
+
+            var beerDto = new BeerDto
+            {
+                Id = beer.BrandID,
+                Name = beer.Name,
+                Alcohol = beer.Alcohol,
+                BrandID = beer.BrandID
+            };
+
+            return CreatedAtAction(nameof(GetById), new {id = beer.BeerID}, beerDto);   //  CreatedAtAction(route, parameters, inforBody) -> Permite retornar un response 'compelto' en el que devolveremos en los headers la url desde la cual se puede obtener el recurso retornado y adicionalmente podemos devolver inforamcion en el body
+                                                                                                                //  nameof(method) -> Convierte a string el recurso especificado
+        }
     }
 }
