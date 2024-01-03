@@ -1,4 +1,6 @@
+using Backend.Models;
 using Backend.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,11 @@ builder.Services.AddHttpClient<IPostsService, PostsService>(e =>    //  AddHttpC
 {
     //e.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/posts");
     e.BaseAddress = new Uri(builder.Configuration["BaseUrlPosts"]); //  Obtenemos la URL desde uno de los elementos del appsettings.json
+});
+
+builder.Services.AddDbContext<StoreContext>(e =>    //  AddDbContext<ContextClass>() -> Inyecta un contexto de BD
+{
+    e.UseSqlServer(builder.Configuration.GetConnectionString("StoreConnection"));
 });
 
 builder.Services.AddControllers();
