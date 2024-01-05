@@ -1,5 +1,8 @@
+using Backend.DTOs;
 using Backend.Models;
 using Backend.Services;
+using Backend.Validators;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +28,9 @@ builder.Services.AddDbContext<StoreContext>(e =>    //  AddDbContext<ContextClas
 {
     e.UseSqlServer(builder.Configuration.GetConnectionString("StoreConnection"));
 });
+
+//  Validators
+builder.Services.AddScoped<IValidator<BeerInsertDto>, BeerInsertValidator>();   //  <IValidator<DtoOrClass>, Validator>() -> Inyecta un validador
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

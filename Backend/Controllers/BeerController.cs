@@ -1,5 +1,7 @@
 ﻿using Backend.DTOs;
 using Backend.Models;
+using Backend.Validators;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +14,12 @@ namespace Backend.Controllers
     public class BeerController : ControllerBase
     {
         private StoreContext _context;
+        private IValidator<BeerInsertDto> _beerInsertValidator; //  Declaramos el validador
 
-        public BeerController(StoreContext context)
+        public BeerController(StoreContext context, IValidator<BeerInsertDto> beerInsertValidator)  //  Recibimos el validador en los parametros del constructor
         {
             _context = context;
+            _beerInsertValidator = beerInsertValidator; //  Asignamos el validador
         }
 
         [HttpGet]
@@ -39,6 +43,13 @@ namespace Backend.Controllers
         [HttpPost]
         public async Task<ActionResult<BeerDto>> Add(BeerInsertDto beerInsertDto)
         {
+            var validationResult = await _beerInsertValidator.ValidateAsync(beerInsertDto); //  ValidateAsync(DtoOrClass) -> Ejecuta los validadores y determina si el DtoOrClass es valido o no
+
+            if (!validationResult.IsValid)  //  Negamos la propidad is valid para que si el DtoOrClass no es valido (false) se ejecute la sentencia
+            {
+                return BadRequest(validationResult.Errors); //  Errors -> Contiene la lista de errores del validador
+            }
+
             var beer = new Beer()
             {
                 Name = beerInsertDto.Name,

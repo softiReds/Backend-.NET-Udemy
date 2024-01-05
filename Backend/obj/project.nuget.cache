@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "adOg8nQWtddtt7boIOgBQ+fF/+g/YylAYPgUdN3qJguXz66S9X2BEA9oPTK9AavtAR90IaQ62p+JhRL9JBdKiA==",
+  "dgSpecHash": "G3Z3fSSSbm3zVVc+j6KFhZBCCmGQdJhDVk3obKte//oUJ+IZI+kBn5kmNoY+LKg5xESO0ZdktgqgAY00axXZMw==",
   "success": true,
   "projectFilePath": "C:\\Users\\santi\\OneDrive\\Documentos\\SantiagoRojas\\Estudio\\Udemy\\Backend - C#\\Backend\\Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\santi\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\santi\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\santi\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
     "C:\\Users\\santi\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\santi\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\santi\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
