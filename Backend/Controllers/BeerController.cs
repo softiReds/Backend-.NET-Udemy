@@ -47,7 +47,7 @@ namespace Backend.Controllers
 
             if (!validationResult.IsValid)  //  Negamos la propidad is valid para que si el DtoOrClass no es valido (false) se ejecute la sentencia
             {
-                return BadRequest(validationResult.Errors); //  Errors -> Contiene la lista de errores del validador
+                return BadRequest(validationResult.Errors); //  Errors -> Contiene la lista de todos los errores del validador
             }
 
             var beer = new Beer()
