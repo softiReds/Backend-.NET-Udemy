@@ -31,6 +31,7 @@ builder.Services.AddDbContext<StoreContext>(e =>    //  AddDbContext<ContextClas
 
 //  Validators
 builder.Services.AddScoped<IValidator<BeerInsertDto>, BeerInsertValidator>();   //  <IValidator<DtoOrClass>, Validator>() -> Inyecta un validador
+builder.Services.AddScoped<IValidator<BeerUpdateDto>, BeerUpdateValidator>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

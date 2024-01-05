@@ -12,7 +12,7 @@ namespace Backend.Validators
             RuleFor(e => e.Name).Length(2, 20).WithMessage("El nombre debe medir de 2 a 20 caracteres");
             RuleFor(e => e.BrandID).NotNull().WithMessage("La marga es obligatoria");
             RuleFor(e => e.BrandID).GreaterThan(0).("El id de la marca debe ser mayor a cero");
-            RuleFor(e => e.Alcohol).GreaterThan(0).("El {PropertyName} debe ser mayor a cero")
+            RuleFor(e => e.Alcohol).GreaterThan(0).("El {PropertyName} debe ser mayor a cero");
         }
     }
 }

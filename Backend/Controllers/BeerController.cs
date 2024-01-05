@@ -15,11 +15,13 @@ namespace Backend.Controllers
     {
         private StoreContext _context;
         private IValidator<BeerInsertDto> _beerInsertValidator; //  Declaramos el validador
+        private IValidator<BeerUpdateDto> _beerUpdateValidator;
 
-        public BeerController(StoreContext context, IValidator<BeerInsertDto> beerInsertValidator)  //  Recibimos el validador en los parametros del constructor
+        public BeerController(StoreContext context, IValidator<BeerInsertDto> beerInsertValidator, IValidator<BeerUpdateDto> beerUpdateValidator)  //  Recibimos el validador en los parametros del constructor
         {
             _context = context;
             _beerInsertValidator = beerInsertValidator; //  Asignamos el validador
+            _beerUpdateValidator = beerUpdateValidator;
         }
 
         [HttpGet]
@@ -75,7 +77,13 @@ namespace Backend.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<BeerDto>> Update(int id, BeerUpdateDto beerUpdateDto)
         {
+            var validationResult = await _beerUpdateValidator.ValidateAsync(beerUpdateDto);
             var beer = await _context.Beers.FindAsync(id);
+
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
 
             if (beer == null)
             {
