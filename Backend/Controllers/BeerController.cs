@@ -1,5 +1,6 @@
 ﻿using Backend.DTOs;
 using Backend.Models;
+using Backend.Services;
 using Backend.Validators;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
@@ -16,12 +17,14 @@ namespace Backend.Controllers
         private StoreContext _context;
         private IValidator<BeerInsertDto> _beerInsertValidator; //  Declaramos el validador
         private IValidator<BeerUpdateDto> _beerUpdateValidator;
+        private IBeerService _beerService;
 
-        public BeerController(StoreContext context, IValidator<BeerInsertDto> beerInsertValidator, IValidator<BeerUpdateDto> beerUpdateValidator)  //  Recibimos el validador en los parametros del constructor
+        public BeerController(StoreContext context, IValidator<BeerInsertDto> beerInsertValidator, IValidator<BeerUpdateDto> beerUpdateValidator, IBeerService beerService)  //  Recibimos el validador en los parametros del constructor
         {
             _context = context;
             _beerInsertValidator = beerInsertValidator; //  Asignamos el validador
             _beerUpdateValidator = beerUpdateValidator;
+            _beerService = beerService;
         }
 
         [HttpGet]
