@@ -7,12 +7,12 @@ namespace Backend.Services
 {
     public class BeerService : ICommonService<BeerDto, BeerInsertDto, BeerUpdateDto>
     {
-        private StoreContext _context;
+        //  private StoreContext _context;
         private IRepository<Beer> _beerRepository;
 
-        public BeerService(StoreContext context, IRepository<Beer> beerRepository) 
+        public BeerService(/*StoreContext context, */IRepository<Beer> beerRepository) 
         {
-            _context = context;
+            //  _context = context;
             _beerRepository = beerRepository;
         }
 
@@ -104,7 +104,9 @@ namespace Backend.Services
 
         public async Task<BeerDto> Delete(int id)
         {
-            var beer = await _context.Beers.FindAsync(id);
+            //  var beer = await _context.Beers.FindAsync(id);
+
+            var beer = await _beerRepository.GetById(id);
 
             if (beer != null)
             {
@@ -116,8 +118,10 @@ namespace Backend.Services
                     BrandID = beer.BrandID
                 };
 
-                _context.Remove(beer);
-                await _context.SaveChangesAsync();
+                //  _context.Remove(beer);
+                _beerRepository.Delete(beer);
+                //  await _context.SaveChangesAsync();
+                await _beerRepository.Save();
 
                 return beerDto;
             }
