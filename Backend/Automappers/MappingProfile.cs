@@ -14,6 +14,8 @@ namespace Backend.Automappers
                 .ForMember(dto => dto.Id,
                             map => map.MapFrom(b => b.BeerID));
             //  ForMember(destiny => destiny.PropertyName, origin => origin.MapFrom(e => e.PropertyNameOrigin)) -> Configura un mapper para propiedades con diferentes nombres, pero continua mapenado automaticamente las propiedades con nombres iguales
+            
+            CreateMap<BeerUpdateDto, Beer>();
         }
     }
 }

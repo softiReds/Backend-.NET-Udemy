@@ -96,9 +96,14 @@ namespace Backend.Services
 
             if (beer != null)
             {
+                /*
                 beer.Name = beerUpdateDto.Name;
                 beer.Alcohol = beerUpdateDto.Alcohol;
                 beer.BrandID = beerUpdateDto.BrandID;
+                */
+
+                beer = _mapper.Map<BeerUpdateDto, Beer>(beerUpdateDto, beer);   //  Cuando se especifican los dos parametros en el mapper, se edita el objeto existente. No crea un nuevo objeto, por lo que no modifica los atributos que no estén mapeados.
+                                                                                //      En este caso, nuestra beer ya tiene un id. Si no especificamos los dos parametros se va a eliminar ese id ya que se va a crear un nuevo objeto. Lo que requerimos es editar, no crear. Basicamente, ignora los campos que no estan en el mapper y modifica los campos que si están en el mapper
 
                 //  await _context.SaveChangesAsync();
                 _beerRepository.Update(beer);
