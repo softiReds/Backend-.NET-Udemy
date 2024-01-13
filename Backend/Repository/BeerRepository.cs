@@ -4,16 +4,6 @@ namespace Backend.Repository
 {
     public class BeerRepository : IRepository<Beer>
     {
-        public Task Add(Beer entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Beer entity)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<IEnumerable<Beer>> Get()
         {
             throw new NotImplementedException();
@@ -24,12 +14,22 @@ namespace Backend.Repository
             throw new NotImplementedException();
         }
 
-        public Task Save()
+        public Task Add(Beer entity)
         {
             throw new NotImplementedException();
         }
 
         public void Update(Beer entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Beer entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Save()
         {
             throw new NotImplementedException();
         }
