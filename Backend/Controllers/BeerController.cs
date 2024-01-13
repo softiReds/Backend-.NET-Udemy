@@ -14,14 +14,14 @@ namespace Backend.Controllers
     [ApiController]
     public class BeerController : ControllerBase
     {
-        private StoreContext _context;
+        //private StoreContext _context;
         private IValidator<BeerInsertDto> _beerInsertValidator; //  Declaramos el validador
         private IValidator<BeerUpdateDto> _beerUpdateValidator;
-        private IBeerService _beerService;
+        private ICommonService<BeerDto, BeerInsertDto, BeerUpdateDto> _beerService; //  Se envían los datos con los que trabajará la interfaz
 
-        public BeerController(StoreContext context, IValidator<BeerInsertDto> beerInsertValidator, IValidator<BeerUpdateDto> beerUpdateValidator, IBeerService beerService)  //  Recibimos el validador en los parametros del constructor
+        public BeerController(/*StoreContext context, */IValidator<BeerInsertDto> beerInsertValidator, IValidator<BeerUpdateDto> beerUpdateValidator, [FromKeyedServices("beerService")]ICommonService<BeerDto, BeerInsertDto, BeerUpdateDto> beerService)  //  Recibimos el validador en los parametros del constructor
         {
-            _context = context;
+            //_context = context;
             _beerInsertValidator = beerInsertValidator; //  Asignamos el validador
             _beerUpdateValidator = beerUpdateValidator;
             _beerService = beerService;
