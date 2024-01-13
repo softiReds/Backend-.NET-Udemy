@@ -1,5 +1,6 @@
 using Backend.DTOs;
 using Backend.Models;
+using Backend.Repository;
 using Backend.Services;
 using Backend.Validators;
 using FluentValidation;
@@ -24,6 +25,8 @@ builder.Services.AddHttpClient<IPostsService, PostsService>(e =>    //  AddHttpC
     //e.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/posts");
     e.BaseAddress = new Uri(builder.Configuration["BaseUrlPosts"]); //  Obtenemos la URL desde uno de los elementos del appsettings.json
 });
+
+builder.Services.AddScoped<IRepository<Beer>, BeerRepository>();
 
 builder.Services.AddDbContext<StoreContext>(e =>    //  AddDbContext<ContextClass>() -> Inyecta un contexto de BD
 {
