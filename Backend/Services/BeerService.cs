@@ -1,4 +1,5 @@
-﻿using Backend.DTOs;
+﻿using AutoMapper;
+using Backend.DTOs;
 using Backend.Models;
 using Backend.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -9,11 +10,13 @@ namespace Backend.Services
     {
         //  private StoreContext _context;
         private IRepository<Beer> _beerRepository;
+        private IMapper _mapper;
 
-        public BeerService(/*StoreContext context, */IRepository<Beer> beerRepository) 
+        public BeerService(/*StoreContext context, */IRepository<Beer> beerRepository, IMapper mapper) 
         {
             //  _context = context;
             _beerRepository = beerRepository;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<BeerDto>> Get()
@@ -49,12 +52,16 @@ namespace Backend.Services
 
         public async Task<BeerDto> Add(BeerInsertDto beerInsertDto)
         {
+            /*
             var beer = new Beer()
             {
                 Name = beerInsertDto.Name,
                 BrandID = beerInsertDto.BrandID,
                 Alcohol = beerInsertDto.Alcohol
             };
+            */
+
+            var beer = _mapper.Map<Beer>(beerInsertDto);    //  Map<destiny>(origin) -> Mapea un objeto del tipo origin en un objeto del tipo destiny. Hace lo del bloque comentareade de arriba, pero reduce el codigo
 
             //  await _context.Beers.AddAsync(beer);
             await _beerRepository.Add(beer);
