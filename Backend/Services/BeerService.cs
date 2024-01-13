@@ -25,7 +25,8 @@ namespace Backend.Services
 
             var beers = await _beerRepository.Get();
 
-            return beers.Select(e => new BeerDto { Id = e.BeerID, Name = e.Name, Alcohol = e.Alcohol, BrandID = e.BrandID });
+            //  return beers.Select(e => new BeerDto { Id = e.BeerID, Name = e.Name, Alcohol = e.Alcohol, BrandID = e.BrandID });
+            return beers.Select(e => _mapper.Map<BeerDto>(e));
         }
 
         public async Task<BeerDto> GetById(int id)
@@ -36,6 +37,7 @@ namespace Backend.Services
 
             if (beer != null)
             {
+                /*
                 var beerDto = new BeerDto
                 {
                     Id = beer.BeerID,
@@ -43,6 +45,9 @@ namespace Backend.Services
                     Alcohol = beer.Alcohol,
                     BrandID = beer.BrandID
                 };
+                */
+
+                var beerDto = _mapper.Map<BeerDto>(beer);
 
                 return beerDto;
             }
@@ -68,6 +73,7 @@ namespace Backend.Services
             //  await _context.SaveChangesAsync();
             await _beerRepository.Save();
 
+            /*
             var beerDto = new BeerDto
             {
                 Id = beer.BeerID,
@@ -75,6 +81,9 @@ namespace Backend.Services
                 Alcohol = beer.Alcohol,
                 BrandID = beer.BrandID
             };
+            */
+
+            var beerDto = _mapper.Map<BeerDto>(beer);
 
             return beerDto;
         }
@@ -95,6 +104,7 @@ namespace Backend.Services
                 _beerRepository.Update(beer);
                 await _beerRepository.Save();
 
+                /*
                 var beerDto = new BeerDto
                 {
                     Id = beer.BeerID,
@@ -102,6 +112,9 @@ namespace Backend.Services
                     Alcohol = beer.Alcohol,
                     BrandID = beer.BrandID
                 };
+                */
+
+                var beerDto = _mapper.Map<BeerDto>(beer);
 
                 return beerDto;
             }
@@ -117,6 +130,7 @@ namespace Backend.Services
 
             if (beer != null)
             {
+                /*
                 var beerDto = new BeerDto
                 {
                     Id = beer.BeerID,
@@ -124,6 +138,9 @@ namespace Backend.Services
                     Alcohol = beer.Alcohol,
                     BrandID = beer.BrandID
                 };
+                */
+
+                var beerDto = _mapper.Map<BeerDto>(beer);
 
                 //  _context.Remove(beer);
                 _beerRepository.Delete(beer);
