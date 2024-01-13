@@ -56,8 +56,10 @@ namespace Backend.Services
                 Alcohol = beerInsertDto.Alcohol
             };
 
-            await _context.Beers.AddAsync(beer);
-            await _context.SaveChangesAsync();
+            //  await _context.Beers.AddAsync(beer);
+            await _beerRepository.Add(beer);
+            //  await _context.SaveChangesAsync();
+            await _beerRepository.Save();
 
             var beerDto = new BeerDto
             {
